@@ -1,5 +1,5 @@
 # vue-topo-ts
-### 环境配置：vue3.0 + ts + element-ui-plus + svg-sprite-loader
+### 环境配置：vue3.0 + ts + element-ui-plus + svg-sprite-loader + Vue.Draggable.next
 ## Project setup
 ```
 npm install
