@@ -5,7 +5,9 @@
       <el-aside width="200px">
         <icon-selector :SvgIconArray="svgIconArray"/>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <svg-container/>
+      </el-main>
       <el-aside width="200px">Aside</el-aside>
     </el-container>
   </el-container>
@@ -15,10 +17,11 @@
 import { defineComponent } from 'vue'
 import IconSelector from '@/components/IconSelector/IconSelector.vue'
 import { SvgIconArray } from '@/types/custom'
+import SvgContainer from '@/components/SvgContainer/SvgContainer.vue'
 
 export default defineComponent({
   name: 'Main',
-  components: { IconSelector },
+  components: { SvgContainer, IconSelector },
   data () {
     return {
       svgIconArray: [{

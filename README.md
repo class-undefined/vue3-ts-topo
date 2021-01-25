@@ -1,4 +1,4 @@
-# vue-topo-ts-env
+# vue-topo-ts
 ### 环境配置：vue3.0 + ts + element-ui-plus + svg-sprite-loader
 ## Project setup
 ```

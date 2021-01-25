@@ -6,25 +6,31 @@
     <el-submenu v-for="(item,index) in svgIconArray" :index="(index + 1).toString()" :key="item.title">
       <template #title>
         <i class="el-icon-location"></i>
-        <span>{{item.title}}</span>
+        <span>{{ item.title }}</span>
       </template>
       <el-menu-item-group>
-<!--        <template #title>{{item.title}}</template>-->
-        <el-menu-item v-for="(svgItem,svgIndex) in item.SvgIcons" :index="(index+1) + '-' + (svgIndex+1)" :key="svgItem.name">
-          <svg-icon :name="svgItem.name"/>
-        </el-menu-item>
+        <!--        <template #title>{{item.title}}</template>-->
+        <draggable @change="handleChange" tag="el-collapse" :list="item.SvgIcons" :component-data="getComponentData()"
+                   item-key="name">
+          <template #item="{element}">
+            <el-menu-item>
+              <svg-icon :name="element.name"/>
+            </el-menu-item>
+          </template>
+        </draggable>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
 </template>
 
 <script lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import draggable from 'vuedraggable'
 import SvgIcon from '@/components/SvgIcon.vue'
 
 export default {
   name: 'IconSelector',
-  components: { SvgIcon },
+  components: { SvgIcon, draggable },
   props: {
     SvgIconArray: {
       type: Array,
@@ -32,6 +38,7 @@ export default {
     }
   },
   setup (prop) {
+    const activeNames = ref('')
     const svgIconArray = computed(() => {
       return prop.SvgIconArray
     })
@@ -41,11 +48,29 @@ export default {
     const handleClose = function (key, keyPath) {
       console.log(key, keyPath)
     }
+    const handleChange = () => {
+      console.log('changed')
+    }
+    const inputChanged = value => {
+      activeNames.value = value
+    }
+    const getComponentData = () => {
+      return {
+        onChange: handleChange,
+        onInput: inputChanged,
+        wrap: false,
+        value: activeNames.value
+      }
+    }
     return {
       prop,
       svgIconArray,
+      activeNames,
       handleOpen,
-      handleClose
+      handleClose,
+      handleChange,
+      inputChanged,
+      getComponentData
     }
   }
 }
