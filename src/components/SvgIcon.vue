@@ -1,9 +1,9 @@
 <template>
   <svg
     :class="className"
+    :height=props.size
+    :width="props.size"
     :style="{
-      width: props.size + 'px',
-      height: props.size + 'px',
       color: props.color
     }"
   >
@@ -13,7 +13,6 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { SvgIconProps } from '@/types/custom'
 
 export default defineComponent({
   name: 'SvgIcon',

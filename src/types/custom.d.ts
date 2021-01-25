@@ -31,4 +31,8 @@ export interface SvgIconItem {
   SvgIcons: Array<SvgIconProps>;
 }
 
+/* SvgContainer接收的svg图标 */
+export type SvgIcons = Array<SvgIconProps>
+
+/* IconSelector用于渲染svg拖拽选择器的svg数据 */
 export type SvgIconArray = Array<SvgIconItem>
