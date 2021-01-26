@@ -6,11 +6,10 @@ import { ref } from 'vue'
 export function deepCopyElement (e: object): object {
   const elementCopy: SvgIconProps = JSON.parse(JSON.stringify(e))
   /* 加入位置属性 */
-  const position: svgPosition = {
+  elementCopy.position = {
     x: 0,
     y: 0
   }
-  elementCopy.position = position
   /* 转换为proxy对象 */
   const element = ref(elementCopy)
   /* 将proxy对象返回 */

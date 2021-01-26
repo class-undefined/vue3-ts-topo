@@ -1,5 +1,5 @@
 <template>
-  <el-menu default-active="2"
+  <el-menu default-active="1"
            class="el-menu-vertical-demo"
            @open="handleOpen"
            @close="handleClose">
@@ -63,7 +63,7 @@ export default {
     const groupOption = ref({
       name: 'icon-selector',
       pull: 'clone', // 拖拽自身元素给其他容器
-      put: false // 是否运行其他元素拖拽给自身
+      put: false // 是否允许其他元素拖拽给自身
     })
     /** 发现一个问题：handleDrop即使在自身容器内的拖拽中设置了sort: false ，也会被调用。
      * 这应该是正常的，但是在这个项目中不希望发生。 所以需要解决这个问题，
@@ -83,8 +83,7 @@ export default {
       console.log('changed')
     }
     const handleClone = (e) => {
-      const element = deepCopyElement(e)
-      return element
+      return deepCopyElement(e)
     }
     const inputChanged = value => {
       activeNames.value = value

@@ -12,7 +12,7 @@ export type SvgIconConfig = {
 }
 
 /** svg坐标类 */
-export interface svgPosition {
+export type svgPosition = {
   x: number;
   y: number;
 }
@@ -30,7 +30,7 @@ export interface SvgIconProps {
   /** 描述文本 */
   desc?: string;
   /* svg坐标 */
-  position?: svgPosition ;
+  position: svgPosition;
 }
 
 /* Svg选择类 */
