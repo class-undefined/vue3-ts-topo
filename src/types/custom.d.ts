@@ -11,6 +11,12 @@ export type SvgIconConfig = {
   nameConfig?: object;
 }
 
+/** svg坐标类 */
+export interface svgPosition {
+  x: number;
+  y: number;
+}
+
 /** SvgIcon组件需要传递的数据类 */
 export interface SvgIconProps {
   /* svg图标路径 */
@@ -23,6 +29,8 @@ export interface SvgIconProps {
   color?: string;
   /** 描述文本 */
   desc?: string;
+  /* svg坐标 */
+  position?: svgPosition ;
 }
 
 /* Svg选择类 */

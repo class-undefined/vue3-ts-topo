@@ -1,19 +1,22 @@
-export function svgDrop (el: HTMLElement): any {
+import { SvgIconProps } from '@/types/custom'
+
+export function svgDrop (el: HTMLElement, svgItem: SvgIconProps) {
   const style: CSSStyleDeclaration = el.style
   style.cursor = 'pointer' // 设置鼠标指针为手型
-  el.onmousedown = function (e) {
+  console.log(el, svgItem)
+  el.onmousedown = function (event) {
     el.onmousemove = e => {
-      console.log(e)
+      console.log(e, event)
     }
-    el.onmouseup = function (e) {
+    el.onmouseup = function (event) {
       el.onmousemove = null
+      console.log(event)
     }
   }
-  console.log(el)
 }
 
 export const directive: object = {
-  mounted (el) {
-    svgDrop(el)
+  mounted (el, svgItem) {
+    svgDrop(el, svgItem)
   }
 }

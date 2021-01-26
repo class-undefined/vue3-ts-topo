@@ -2,14 +2,14 @@
   <div class="svg-container" ref="svg-container-div">
     <draggable
       @change="handleChange"
+      @added="handleChange"
       tag="svg"
-      @item="handleItem"
       :list="svgArray"
       :group="groupOption"
       :component-data="getComponentData()"
       item-key="name">
       <template #item="{element}">
-        <g v-svg-drop="">
+        <g v-svg-drop="element">
           <svg-icon style="height: 40px;width: 40px" :name="element.name" :nick="element.nick" :size="40"/>
         </g>
       </template>
@@ -48,7 +48,12 @@ export default defineComponent({
     const activeNames = ref('')
     /* 事件回调函数系列 */
     const handleChange = (e) => {
-      console.log(e)
+      /* added: 元素拷贝成功后的handle event */
+      /** BUG: 存在一个错误，即两个容器传递的数据为引用关系，若在svg-container组件中修改svg的数据，则在选择器中，该数据也会发生改变
+       * TODO 在选择器的clone handle中返回一个深拷贝元素，这样draggable就会自动添加元素至list
+       * 在此函数中将e.added.element元素进行深拷贝可能存在一些不必要的繁琐问题，即需要重新设置data   */
+      e.added.element.name = '5'
+      console.log(e.added.element)
     }
     const handleItem = e => {
       console.log(e)
