@@ -1,5 +1,5 @@
 <template>
-  <div class="svg-container">
+  <div class="svg-container" ref="svg-container-div">
     <draggable
       @change="handleChange"
       tag="svg"
@@ -9,8 +9,8 @@
       :component-data="getComponentData()"
       item-key="name">
       <template #item="{element}">
-        <g>
-          <svg-icon :name="element.name" :nick="element.nick" :size="40"/>
+        <g v-svg-drop="">
+          <svg-icon style="height: 40px;width: 40px" :name="element.name" :nick="element.nick" :size="40"/>
         </g>
       </template>
     </draggable>
@@ -40,8 +40,8 @@ export default defineComponent({
     /* groupOption：组配置 */
     const groupOption = ref({
       name: 'svg-container',
-      pull: true, // 后续根据需要应该要修改成一个函数
-      put: ['icon-selector']
+      pull: ['svg-container'] || true, // 后续根据需要应该要修改成一个函数
+      put: ['icon-selector'] || true
     })
     /* svg数据数组 */
     const svgArray = ref([])
@@ -62,7 +62,8 @@ export default defineComponent({
         onChange: handleChange,
         onInput: inputChanged,
         wrap: false,
-        value: activeNames.value
+        value: activeNames.value,
+        ref: 'svg-container'
       }
     }
     return {
