@@ -31,6 +31,8 @@
 import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
 import SvgIcon from '@/components/SvgIcon.vue'
+import { SvgIconProps, svgPosition } from '@/types/custom'
+import { deepCopyElement } from '@/components/IconSelector/utils/utils'
 
 export default {
   name: 'IconSelector',
@@ -81,8 +83,8 @@ export default {
       console.log('changed')
     }
     const handleClone = (e) => {
-      console.log(e)
-      return e
+      const element = deepCopyElement(e)
+      return element
     }
     const inputChanged = value => {
       activeNames.value = value
