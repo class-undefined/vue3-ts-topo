@@ -10,6 +10,10 @@ export function deepCopyElement (e: object): object {
     x: 0,
     y: 0
   }
+  /* 加入设置 */
+  elementCopy.setting = {
+    move: true
+  }
   /* 转换为proxy对象 */
   const element = ref(elementCopy)
   /* 将proxy对象返回 */

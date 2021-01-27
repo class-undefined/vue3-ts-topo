@@ -30,9 +30,8 @@
 <script lang="ts">
 import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
-import SvgIcon from '@/components/SvgIcon.vue'
-import { SvgIconProps, svgPosition } from '@/types/custom'
 import { deepCopyElement } from '@/components/IconSelector/utils/utils'
+import SvgIcon from '@/components/SvgIcon.vue'
 
 export default {
   name: 'IconSelector',
@@ -63,7 +62,7 @@ export default {
     const groupOption = ref({
       name: 'icon-selector',
       pull: 'clone', // 拖拽自身元素给其他容器
-      put: false // 是否允许其他元素拖拽给自身
+      put: true // 是否允许其他元素拖拽给自身
     })
     /** 发现一个问题：handleDrop即使在自身容器内的拖拽中设置了sort: false ，也会被调用。
      * 这应该是正常的，但是在这个项目中不希望发生。 所以需要解决这个问题，
@@ -94,7 +93,7 @@ export default {
         onChange: handleChange, // 视图改变事件
         onInput: inputChanged, // 输入事件
         onDrop: handleDrop, // 拖拽事件
-        wrap: false,
+        // wrap: false,
         value: activeNames.value
       }
     }

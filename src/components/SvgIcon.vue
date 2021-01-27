@@ -1,8 +1,8 @@
 <template>
   <svg
-    :class="className"
-    :height=props.size
-    :width="props.size"
+    :class="'svg-icon-[' + props.nick + ']'"
+    :height=props.size.height
+    :width="props.size.width"
     :style="{
       color: props.color
     }"
@@ -28,8 +28,13 @@ export default defineComponent({
       default: 'undefined'
     },
     size: {
-      type: Number,
-      default: 32
+      type: Object,
+      default () {
+        return {
+          width: 32,
+          height: 32
+        }
+      }
     },
     color: {
       type: String,
@@ -37,12 +42,8 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const className = computed(() => {
-      return 'svg-icon-[' + props.nick + ']'
-    })
     return {
-      props,
-      className
+      props
     }
   }
 })

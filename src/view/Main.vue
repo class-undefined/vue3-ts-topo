@@ -29,17 +29,17 @@ export default defineComponent({
         SvgIcons: [{
           name: '1',
           nick: '↓',
-          size: 32,
+          size: { width: 32, height: 32 },
           desc: '方向下'
         }, {
           name: '2',
           nick: '+-',
-          size: 32,
+          size: { width: 32, height: 32 },
           desc: '加减'
         }, {
           name: '3',
           nick: '↓↓',
-          size: 32,
+          size: { width: 32, height: 32 },
           desc: '方向下下'
         }]
       }, {
@@ -47,12 +47,12 @@ export default defineComponent({
         SvgIcons: [{
           name: '4',
           nick: 'WIRE',
-          size: 32,
+          size: { width: 32, height: 32 },
           desc: 'WIRE'
         }, {
           name: '5',
           nick: 'NAME NODE',
-          size: 32,
+          size: { width: 32, height: 32 },
           desc: '节点名称'
         }]
       }] as SvgIconArray
@@ -85,7 +85,7 @@ export default defineComponent({
   background-color: #E9EEF3;
   color: #333;
   text-align: center;
-  line-height: 160px;
+  /*line-height: 160px;*/
 }
 
 body > .el-container {
